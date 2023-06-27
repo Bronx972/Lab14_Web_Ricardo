@@ -1,0 +1,54 @@
+<app-navbar></app-navbar>
+<section class="content">
+    <div class="container-fluid">
+      <div class="row m-t-sm">
+        <div class="col-md-15">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="col-md-12 col-sm-12" id="form" style="display:block;">
+                        <div class="panel panel-filled">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12"><h5 class="m-t-xs">Ingreso de Copia</h5></div>
+                                </div>
+                                <form [formGroup]="cintaForm" (ngSubmit)="agregarCinta()">
+                                    <div class="form-group">
+                                        <label>Pelicula</label>
+                                        <select class="form-control" formControlName="pelicula" [(ngModel)]="id">
+                                            <option value="" selected disabled>Seleccionar</option>
+                                            <option value="{{item._id}}" *ngFor="let item of listPeliculas">{{item.titulo}}</option>
+                                        </select>
+
+                                        <!-- <input type="text" formControlName="pelicula"
+                                            class="form-control" placeholder="Ingresar Pelicula"> -->
+                                        <div class="text-danger"
+                                            *ngIf="cintaForm.get('pelicula')?.hasError('required') && cintaForm.get('pelicula')?.touched">
+                                            <span>La Pelicula <strong>es obligatoria</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Cinta</label>
+                                        <input type="text" formControlName="id_cinta" 
+                                            class="form-control" placeholder="Ingresar ID Cinta">
+                                        <div class="text-danger"
+                                            *ngIf="cintaForm.get('id_cinta')?.hasError('required') && cintaForm.get('id_cinta')?.touched">
+                                            <span>El nombre de cinta <strong>es obligatorio</strong></span>
+                                        </div>
+                                    </div>
+                                    <div  class="col-sm-12 text-right">
+                                        <div class="panel-body buttons-margin">
+                                           <button type="submit" [disabled]="cintaForm.invalid" class="btn btn-w-md btn-success">Guardar</button>&nbsp;&nbsp;
+                                           <button class="btn btn-w-md btn-warning" routerLink="/listar-cintas">Cancelar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+      </div>
+    </div>
+</section>
+

@@ -1,0 +1,70 @@
+<app-navbar></app-navbar>
+<section class="content">
+<div class="container-fluid">
+    <div class="row m-t-sm">
+        <div class="col-md-15">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="col-md-12 col-sm-12" id="list_alumnos">
+                        <div class="panel panel-filled">
+                            <div class="panel-body">
+                                <div class="view-header">
+                                    <div class="header-icon">
+                                        <i class="pe page-header-icon pe-7s-note2"></i>
+                                    </div>
+                                    <div class="header-title">
+                                        <h3>Cintas</h3>
+                                        <small>
+                                            Cintas Registradas
+                                        </small>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10">
+                                    </div>
+                                    <div class="col-sm-12 text-right">
+                                            <a id="btnNuevo" class="btn btn-w-md btn-info"
+                                                routerLink="/crear-cinta">Nuevo Cinta</a>&nbsp;&nbsp;
+                                                <!-- (click)="generarPDF()"  va en <a> imprimir-->
+                                            <a id="btnNuevo" class="btn btn-w-md btn-warning">Imprimir</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="table-responsive">
+                                    <table *ngIf="listCintas.length > 0" class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Pelicula</th>
+                                                <th>ID Cinta</th>
+                                                <th>Disponible</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="datos">
+                                            <tr *ngFor="let cinta of listCintas">
+                                                <td>{{ cinta.pelicula }}</td>
+                                                <td>{{ cinta.id_cinta }}</td>
+                                                <td>{{ cinta.disponible }}</td>
+                                                <td>
+                                                    <i (click)="eliminarCinta(cinta._id)" style="font-size: 25px;" class="pe pe-7s-trash text-accent"></i>&nbsp;&nbsp;
+                                                    <!-- <i [routerLink]="['/editar-pelicula', pelicula._id]" style="font-size: 25px;" class="pe pe-7s-pen text-accent"></i> -->
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br>
+                                <div class="text-right font-bold c-white y-value">
+                                    <div id="val_a">Total Cintas: {{elementos}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
